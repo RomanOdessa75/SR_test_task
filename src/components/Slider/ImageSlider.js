@@ -43,13 +43,12 @@ export default function ImageSlider({ images }) {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<div className="flex">
-				<div className="swiper-button-next uppercase absolute font-thin text-[33px] leading-[40px] tracking-[0]">
-					Next
-				</div>
-				<div className="swiper-button-prev uppercase absolute font-thin text-[33px] leading-[40px] tracking-[0]">
-					Prev
-				</div>
+
+			<div className="swiper-button-next uppercase absolute font-thin text-[33px] leading-[40px] tracking-[0]">
+				Next
+			</div>
+			<div className="swiper-button-prev uppercase absolute font-thin text-[33px] leading-[40px] tracking-[0]">
+				Prev
 			</div>
 		</div>
 	);
