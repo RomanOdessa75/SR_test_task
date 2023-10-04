@@ -32,17 +32,27 @@ export default function BurgerMenu() {
 
   return (
     <>
-      <button className="menu-button sm:hidden uppercase" onClick={toggleMenu}>
+      <button
+        type="button"
+        className="menu-button sm:hidden uppercase"
+        onClick={toggleMenu}
+      >
         Menu
       </button>
       <div
         className={`mobile-menu bg-menuColor fixed w-[100vw] h-[100vh] z-[999] top-[0] left-[0] backdrop-blur-[15px] sm:hidden ${
-          isOpen ? "isOpen" : ""
+          // isOpen ? "isOpen" : ""
+          isOpen ? "isOpen slide-in" : "hidden slide-out"
         }`}
+        // className={`mobile-menu bg-menuColor fixed w-[100vw] h-[100vh] z-[999] top-[0] left-[0] backdrop-blur-[15px] sm:hidden ${
+        //   isOpen ? "slide-in" : "slide-out"
+        // }`}
+        key={isOpen ? "open" : "closed"}
       >
-        <div className="container z-[1] max-w-[280px] flex flex-col relative mt-[36px] mx-[auto] mb-[0]">
+        <div className="container z-[1] max-w-[280px] flex flex-col relative mt-[0] mx-[auto] mb-[0]">
           <button
-            className="close-button uppercase pt-[10px] text-[14px] font-normal leading-[17px] tracking-[0.1em] absolute right-[20px]"
+            type="button"
+            className="close-button uppercase pt-[10px] text-[14px] font-normal leading-[17px] tracking-[0.1em] absolute right-[20px] mt-[43px]"
             onClick={toggleMenu}
           >
             Close

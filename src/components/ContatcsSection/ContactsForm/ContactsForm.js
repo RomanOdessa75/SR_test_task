@@ -1,5 +1,7 @@
-import CrossIcon from "../icons/CrossIcon";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import SuccessMessage from "@/components/Toast/Toast";
+import CrossIcon from "../../icons/CrossIcon";
 
 export default function ContactsForm() {
   const {
@@ -7,13 +9,40 @@ export default function ContactsForm() {
     handleSubmit,
     reset,
     formState: { errors },
+    setValue,
+    getValues,
   } = useForm({
     mode: "onChange",
+    defaultValues: {
+      fullName: "",
+      email: "",
+      message: "",
+    },
   });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const onSubmit = (data) => {
     console.log(data);
+    localStorage.setItem("contactsFormData", JSON.stringify(data));
     reset();
+    setIsSubmitted(true);
   };
+
+  useEffect(() => {
+    const savedData = localStorage.getItem("contactsFormData");
+    if (savedData) {
+      const parsedData = JSON.parse(savedData);
+      setValue("fullName", parsedData.fullName);
+      setValue("email", parsedData.email);
+      setValue("message", parsedData.message);
+    }
+  }, [setValue]);
+
+  const closeMessage = () => {
+    setIsSubmitted(false);
+  };
+
   return (
     <form
       className="sm:flex-row flex flex-col gap-[16px] sm:gap-[20px] md:flex-col"
@@ -37,13 +66,13 @@ export default function ContactsForm() {
             })}
             className={`${
               errors.fullName ? "text-red-500" : ""
-            } bg-inputBg pr-[5px] md:py-[2px] md:text-[20px] md:leading-[24px] text-[13px] leading-[24px] font-extralight pl-[8px] focus:bg-inputFocusBg focus:outline-none`}
+            } bg-inputBg pr-[5px] md:py-[2px] md:text-[20px] md:leading-[24px] text-[13px] leading-[24px] font-extralight pl-[8px] focus:bg-inputFocusBg focus:outline-gray-400 transition duration-500 ease`}
           ></input>
           {errors.fullName && (
             <>
               <CrossIcon
                 className={
-                  "absolute top-[57px] left-[149px] sm:left-[91px] md:top-[59px] md:left-[157px]"
+                  "absolute top-[57px] left-[149px] sm:left-[91px] md:top-[59px] md:left-[157px] "
                 }
                 width={18}
                 height={18}
@@ -72,7 +101,7 @@ export default function ContactsForm() {
             })}
             className={`${
               errors.email ? "text-red-500" : ""
-            } bg-inputBg pr-[5px] md:py-[2px] md:text-[20px] md:leading-[24px] text-[13px] leading-[24px] font-extralight pl-[8px] focus:bg-inputFocusBg focus:outline-none`}
+            } bg-inputBg pr-[5px] md:py-[2px] md:text-[20px] md:leading-[24px] text-[13px] leading-[24px] font-extralight pl-[8px] focus:bg-inputFocusBg focus:outline-gray-400 transition duration-500 ease`}
           ></input>
           {errors.email && (
             <>
@@ -96,18 +125,21 @@ export default function ContactsForm() {
             Message
           </label>
           <textarea
-            className="bg-inputBg py-[2px] px-[8px] focus:bg-inputFocusBg focus:outline-none sm:mb-[9px] md:w-[607px] md:h-[268px]"
+            className="bg-inputBg py-[2px] px-[8px] focus:bg-inputFocusBg focus:outline-none sm:mb-[9px] md:w-[607px] md:h-[268px] focus:outline-gray-400 transition duration-500 ease"
             rows={8}
             {...register("message", {})}
           ></textarea>
         </div>
         <button
-          className="self-end uppercase text-[30px] font-medium leading-[36px] text-end sm:flex sm:ml-[auto]"
+          className="self-end uppercase text-[30px] font-medium leading-[36px] text-end sm:flex sm:ml-[auto] hover:scale-90 transition duration-500 ease"
           type="submit"
         >
           Send
         </button>
       </div>
+      {isSubmitted && (
+        <SuccessMessage isSubmitted={isSubmitted} closeMessage={closeMessage} />
+      )}
     </form>
   );
 }
