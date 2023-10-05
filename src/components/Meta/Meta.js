@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 const Meta = () => {
   return (
     <Helmet>
-      <title>{title}</title>
       <meta property="og:title" content="Carpathian's Secrets" />
       <meta property="og:site_name" content="Carpathian's Secrets" />
       <meta
