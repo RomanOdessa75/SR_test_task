@@ -1,12 +1,20 @@
 import { Inter } from "next/font/google";
 import Header from "@/components/Header/Header";
+// import Meta from "@/components/Meta/Meta";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// export const metadata = {
+//   title: "CarpathianSecret",
+//   description: "CarpathianSecret Web-site",
+// };
 export const metadata = {
-  title: "CarpathianSecret",
-  description: "CarpathianSecret Web-site",
+  title: "Carpathian's Secrets",
+  description:
+    "Welcome to CARPATHIAN'S SECRETS! Our website is dedicated to all adventure seekers and nature lovers who want to explore the breathtaking beauty of mountains.",
+  image: "https://softryzen-test.vercel.app/carpatians-secrets.png",
+  url: "https://softryzen-test.vercel.app/",
 };
 
 export default function RootLayout({ children }) {
@@ -19,23 +27,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
-// --------------------------------------------------------
-
-// import "./globals.css";
-// import { Inter } from "next/font/google";
-
-// const inter = Inter({ subsets: ["latin"] });
-
-// export const metadata = {
-// 	title: "CarpathianSecret",
-// 	description: "CarpathianSecret Web-site",
-// };
-
-// export default function RootLayout({ children }) {
-// 	return (
-// 		<html lang="en">
-// 			<body className={inter.className}>{children}</body>
-// 		</html>
-// 	);
-// }
