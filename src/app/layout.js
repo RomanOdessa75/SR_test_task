@@ -8,7 +8,7 @@ export const metadata = {
   title: "Carpathian's Secrets",
   description:
     "Welcome to CARPATHIAN'S SECRETS! Our website is dedicated to all adventure seekers and nature lovers who want to explore the breathtaking beauty of mountains.",
-  image: "https://softryzen-test.vercel.app/carpatians-secrets.png",
+  "og:image": "https://softryzen-test.vercel.app/carpatians-secrets.png",
   url: "https://softryzen-test.vercel.app/",
 };
 
