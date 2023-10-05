@@ -5,13 +5,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>Carpathian's Secrets</title>
-          <meta name="title" content="Carpathian's Secrets" />
-          <meta
-            name="description"
-            content="Welcome to CARPATHIAN'S SECRETS! Our website is dedicated to all adventure seekers and nature lovers who want to explore the breathtaking beauty of mountains."
-          />
-
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://metatags.io/" />
           <meta property="og:title" content="Carpathian's Secrets" />
